@@ -201,7 +201,7 @@ pub trait Lamports<'info>: AsRef<AccountInfo<'info>> {
         **self.as_ref().try_borrow_mut_lamports()? = self
             .get_lamports()
             .checked_add(amount)
-            .ok_or(ProgramError::ArithmeticOverflow)?;
+            .ok_or(ProgramError::Custom(444))?; // ArithmeticOverflow
         Ok(self)
     }
 
@@ -222,7 +222,7 @@ pub trait Lamports<'info>: AsRef<AccountInfo<'info>> {
         **self.as_ref().try_borrow_mut_lamports()? = self
             .get_lamports()
             .checked_sub(amount)
-            .ok_or(ProgramError::ArithmeticOverflow)?;
+            .ok_or(ProgramError::Custom(444))?;  // ArithmeticOverflow
         Ok(self)
     }
 }
